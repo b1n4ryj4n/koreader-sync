@@ -9,6 +9,7 @@ from flask import Flask, request, jsonify
 
 # TODO
 # return content type application/vnd.koreader.v1+json
+# Support for https://
 
 ## Database stuff. Easy to replace with anything: MySql, sqlite, whatever...
 
@@ -212,6 +213,11 @@ def main():
     logging.getLogger('werkzeug').addHandler(handler) # HTTP log goes here
     app.logger.addHandler(handler)
     app.logger.setLevel(logging.DEBUG)
-    app.run(debug=args.verbose,host=args.host, port=args.port)
+
+    # from OpenSSL import SSL
+    # context = SSL.Context(SSL.SSLv23_METHOD)
+    # context.use_privatekey_file('yourserver.key')
+    # context.use_certificate_file('yourserver.crt')
+    app.run(debug=args.verbose,host=args.host, port=args.port, ssl_context=None)
 
 main()
