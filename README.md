@@ -1,5 +1,10 @@
 # koreader-sync
 
+## Description
+
+Quick and dirty implementation of the KOReader (https://github.com/koreader/koreader) sync service.
+I found stock implementation (https://github.com/koreader/koreader-sync-server) too heavy for my personal needs.
+ 
 ## Dependencies
 
 Flask : http://flask.pocoo.org/
