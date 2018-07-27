@@ -7,9 +7,7 @@ import traceback
 from logging.handlers import RotatingFileHandler
 from flask import Flask, request, jsonify
 
-# TODO
-# return content type application/vnd.koreader.v1+json
-# Support for https://
+# TODO return content type application/vnd.koreader.v1+json
 
 ## Database stuff. Easy to replace with anything: MySql, sqlite, whatever...
 
@@ -198,9 +196,11 @@ def updateProgress():
 
 def main():
     parser = argparse.ArgumentParser(description="KOReader Sync Server")
-    parser.add_argument("-d", "--database", type = str, default='users.json', help = "Database")
+    parser.add_argument("-d", "--database", type = str, default='users.json', help = "JSON Database file")
     parser.add_argument("-t", "--host", type = str, default="0.0.0.0", help = "Server host")
     parser.add_argument("-p", "--port", type = int, default=8081, help = "Server port")
+    parser.add_argument("-c", "--certificate", type = str, help = "SSL Certificate file")
+    parser.add_argument("-k", "--key", type = str, help = "SSL Private key file")
     parser.add_argument("-l", "--logfile", type = str, default='koreader-server.log', help = "Log file")
     parser.add_argument("-v", "--verbose", action='store_true', help = "Run server in debug mode")
     args = parser.parse_args()
@@ -214,10 +214,9 @@ def main():
     app.logger.addHandler(handler)
     app.logger.setLevel(logging.DEBUG)
 
-    # from OpenSSL import SSL
-    # context = SSL.Context(SSL.SSLv23_METHOD)
-    # context.use_privatekey_file('yourserver.key')
-    # context.use_certificate_file('yourserver.crt')
-    app.run(debug=args.verbose,host=args.host, port=args.port, ssl_context=None)
+    context = None
+    if (args.certificate and args.key):
+        context = (args.certificate, args.key)
+    app.run(debug=args.verbose,host=args.host, port=args.port, ssl_context=context)
 
 main()

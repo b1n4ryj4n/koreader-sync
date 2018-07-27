@@ -8,11 +8,14 @@ I found stock implementation (https://github.com/koreader/koreader-sync-server) 
 ## Dependencies
 
 Flask : http://flask.pocoo.org/
+pyOpenSSL: https://pyopenssl.org/en/stable/api.html
 
 ## Install and run
 
 ```bash
 > pip install flask-restful
+
+> pip install pyopenssl
 
 > python3 koreader-flask.py --help
 
