@@ -14,6 +14,7 @@ from flask import Flask, request, jsonify
 # UserDB:
 # {
 #    'username' : {
+#        'username': "username", // Duplicated for convenience
 #        'userkey' : "key",
 #        'documents' : {
 #            'document' : {
@@ -55,7 +56,7 @@ def addUser(userName, userKey):
 
     if (getUser(userName) != None):
         return False
-    users[userName] = dict(userkey=userKey)
+    users[userName] = dict(username=userName, userkey=userKey)
     saveDb()
     return True
 
@@ -183,7 +184,7 @@ def updateProgress():
         if (request.is_json):
             position = request.get_json()
             document = position.get('document')
-            timestamp = updatePosition(user['username'], position)
+            timestamp = updatePosition(user['username'], document, position)
             return jsonify(dict(document = document, timestamp = timestamp)), 200
         else:
             return 'Invalid request', 400
