@@ -24,7 +24,3 @@ I found stock implementation (https://github.com/koreader/koreader-sync-server) 
 ## Modify according to your needs
 
 Do whatever you want to
-
-## TODO
-
-* https support
