@@ -21,7 +21,7 @@ from flask import Flask, request, jsonify
 #                'progress' : "progress",
 #                'percentage' : percentage,
 #                'device' : "device",
-#                'devise_id': "deviceId",
+#                'device_id': "deviceId",
 #                'timestamp': timestamp
 #        }
 #    }
