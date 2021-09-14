@@ -36,7 +36,7 @@ def loadDb():
         theFile.close()
     else:
         users = dict()
-    return users;
+    return users
 
 def saveDb():
     global users
@@ -62,7 +62,7 @@ def addUser(userName, userKey):
 
 def getPosition(username, document):
     user = getUser(username)
-    doc = dict();
+    doc = dict()
     documents = user.get('documents')
     if (documents != None):
         doc = documents.get(document)
@@ -197,12 +197,12 @@ def updateProgress():
 
 def main():
     parser = argparse.ArgumentParser(description="KOReader Sync Server")
-    parser.add_argument("-d", "--database", type = str, default='users.json', help = "JSON Database file")
+    parser.add_argument("-d", "--database", type = str, default='./data/users.json', help = "JSON Database file")
     parser.add_argument("-t", "--host", type = str, default="0.0.0.0", help = "Server host")
     parser.add_argument("-p", "--port", type = int, default=8081, help = "Server port")
     parser.add_argument("-c", "--certificate", type = str, help = "SSL Certificate file")
     parser.add_argument("-k", "--key", type = str, help = "SSL Private key file")
-    parser.add_argument("-l", "--logfile", type = str, default='koreader-server.log', help = "Log file")
+    parser.add_argument("-l", "--logfile", type = str, default='./data/koreader-server.log', help = "Log file")
     parser.add_argument("-v", "--verbose", action='store_true', help = "Run server in debug mode")
     args = parser.parse_args()
 
