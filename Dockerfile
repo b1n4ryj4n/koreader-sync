@@ -20,10 +20,10 @@ RUN python3.9 -m pip install --no-cache-dir --upgrade \
 RUN python3.9 -m pip install --no-cache-dir \
     -r requirements.txt
 
-COPY koreader-flask.py .
+COPY kosync.py .
 
 EXPOSE 8081
 
 VOLUME ["/app/data"]
 
-CMD ["python3.9", "koreader-flask.py"]
+CMD ["uvicorn", "kosync:app", "--host", "0.0.0.0", "--port", "8081"]
