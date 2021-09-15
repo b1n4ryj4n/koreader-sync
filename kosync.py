@@ -7,7 +7,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from tinydb import TinyDB, Query
 
-app = FastAPI()
+app = FastAPI(openapi_url=None, redoc_url=None)
 db = TinyDB('data/db.json')
 users = db.table('users')
 documents = db.table('documents')
