@@ -1,9 +1,8 @@
-# koreader-sync
+# Koreader position sync server
 
 ## Description
 
-Quick and dirty implementation of the KOReader (https://github.com/koreader/koreader) sync service.
-I found stock implementation (https://github.com/koreader/koreader-sync-server) too heavy for my personal needs. This is a fork of https://github.com/myelsukov/koreader-sync but i rewrite the complete code.
+This is a simple implementation of the KOReader (https://github.com/koreader/koreader) position sync server for self-hosting at home which has docker support for arm and amd64 :) _This is a fork of https://github.com/myelsukov/koreader-sync but with a complete code rewrite._
  
 ## Dependencies
 
@@ -28,6 +27,12 @@ I found stock implementation (https://github.com/koreader/koreader-sync-server) 
 > docker-compose up -d
 
 ```
+
+## Dockerhub
+
+There is also a dockerhub image available if you are not able to build yourself the image.
+
+For linux/amd64 you can use `docker pull b1n4ryj4n/koreader-sync` and for linux/arm `docker pull b1n4ryj4n/koreader-sync:arm`
 
 ## Connection
 
