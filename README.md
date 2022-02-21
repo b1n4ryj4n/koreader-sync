@@ -41,6 +41,10 @@ For linux/amd64 you can use `docker pull b1n4ryj4n/koreader-sync` and for linux/
 
 ## Changelog
 
+## [0.0.2] - 2021-02-21
+### Added
+- Merged ["Dockerfile: use multi-stage build to optimize image size"](https://github.com/b1n4ryj4n/koreader-sync/pull/3)
+
 ## [0.0.1] - 2021-05-15
 ### Added
 - First version
