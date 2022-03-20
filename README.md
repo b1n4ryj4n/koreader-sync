@@ -9,6 +9,7 @@ This is a simple implementation of the KOReader (https://github.com/koreader/kor
 * FastAPI : https://github.com/tiangolo/fastapi
 * TinyDB: https://github.com/msiemens/tinydb
 * Uvicorn: https://www.uvicorn.org/
+* Python-dotenv: https://saurabh-kumar.com/python-dotenv/
 
 ## Install and run
 
