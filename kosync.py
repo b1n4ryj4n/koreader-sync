@@ -1,17 +1,21 @@
 # -*- coding: utf-8 -*-
 import time
+import uuid
+from distutils.util import strtobool
+from os import getenv
 from typing import Optional
 
+from dotenv import load_dotenv
 from fastapi import FastAPI, Header
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
-from tinydb import TinyDB, Query
+from tinydb import Query, TinyDB
 
 app = FastAPI(openapi_url=None, redoc_url=None)
-db = TinyDB('data/db.json')
-users = db.table('users')
-documents = db.table('documents')
-
+db = TinyDB("data/db.json")
+users = db.table("users")
+documents = db.table("documents")
+load_dotenv()
 
 class KosyncUser(BaseModel):
     username: Optional[str] = None
@@ -110,10 +114,16 @@ def get_progress(document: Optional[str] = None, x_auth_user: Optional[str] = He
         # get document progress if user has the document
         result = documents.get((QDocument.username == x_auth_user) & (QDocument.document == document))
         if result:
+            rrdi = bool(strtobool(getenv("RECEIVE_RANDOM_DEVICE_ID", "False")))
+            if rrdi == False:
+                device_id = result["device_id"]
+            else:
+                device_id = uuid.uuid1()
+                device_id = str(device_id.hex).upper()
             return JSONResponse(status_code=200,
                                 content={'username': x_auth_user, 'document': result["document"],
                                          'progress': result["progress"], 'percentage': result["percentage"],
-                                         'device': result["device"], 'device_id': result["device_id"],
+                                         'device': result["device"], 'device_id': device_id,
                                          'timestamp': result["timestamp"]})
     else:
         return JSONResponse(status_code=401, content={"message": f"Unauthorized"})

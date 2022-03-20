@@ -22,11 +22,20 @@ This is a simple implementation of the KOReader (https://github.com/koreader/kor
 ## Or via Docker
 
 ```bash
-> docker build --rm=true --tag=kosync .
+> docker build --rm=true --tag=kosync:latest .
 
 > docker-compose up -d
 
 ```
+
+## Environment Variables
+
+* RECEIVE_RANDOM_DEVICE_ID ("True"|"False")
+
+Set it true to retrieve always a random device id to force a progress sync. 
+This is usefull if you only sync your progress from only one device and 
+usually delete the *.sdr files with some cleaning tools.
+
 
 ## Dockerhub
 
@@ -40,6 +49,10 @@ For linux/amd64 you can use `docker pull b1n4ryj4n/koreader-sync` and for linux/
 * Recommendation: Setup a reverse proxy for example with Nginx Proxy Manager (https://nginxproxymanager.com/) to connect with https
 
 ## Changelog
+
+## [0.0.3] - 2021-03-20
+### Added
+- Added an environment variable option to receive always a random device id
 
 ## [0.0.2] - 2021-02-21
 ### Added
