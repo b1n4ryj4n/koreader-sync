@@ -34,7 +34,7 @@ This is a simple implementation of the KOReader (https://github.com/koreader/kor
 * RECEIVE_RANDOM_DEVICE_ID ("True"|"False")
 
 Set it true to retrieve always a random device id to force a progress sync. 
-This is usefull if you only sync your progress from only one device and 
+This is usefull if you only sync your progress from one device and 
 usually delete the *.sdr files with some cleaning tools.
 
 
