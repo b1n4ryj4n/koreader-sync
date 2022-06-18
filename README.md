@@ -51,14 +51,14 @@ For linux/amd64 you can use `docker pull b1n4ryj4n/koreader-sync` and for linux/
 
 ## Changelog
 
-## [0.0.3] - 2021-03-20
+## [0.0.3] - 2022-03-20
 ### Added
 - Added an environment variable option to receive always a random device id
 
-## [0.0.2] - 2021-02-21
+## [0.0.2] - 2022-02-21
 ### Added
 - Merged ["Dockerfile: use multi-stage build to optimize image size"](https://github.com/b1n4ryj4n/koreader-sync/pull/3)
 
-## [0.0.1] - 2021-05-15
+## [0.0.1] - 2022-05-15
 ### Added
 - First version
