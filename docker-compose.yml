@@ -9,4 +9,4 @@ services:
       - ./data:/app/data
     environment:
       - RECEIVE_RANDOM_DEVICE_ID=False
-    restart: always
+    restart: unless-stopped
