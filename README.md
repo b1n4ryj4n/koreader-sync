@@ -51,6 +51,10 @@ For linux/amd64 you can use `docker pull b1n4ryj4n/koreader-sync` and for linux/
 
 ## Changelog
 
+## [0.0.4] - 2023-10-29
+### Added
+- Added the HEALTHCHECK command (also accessible via http://IP:8081/healthstatus)
+
 ## [0.0.3] - 2022-03-20
 ### Added
 - Added an environment variable option to receive always a random device id

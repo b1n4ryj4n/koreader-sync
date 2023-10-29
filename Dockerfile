@@ -1,4 +1,4 @@
-FROM python:3.10-slim AS builder
+FROM python:3.11-slim AS builder
 
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -23,7 +23,12 @@ RUN python3 -m pip install --user --no-cache-dir --upgrade \
 RUN python3 -m pip install --user --no-cache-dir \
     -r requirements.txt
 
-FROM python:3.10-slim
+FROM python:3.11-slim
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV PYTHONUNBUFFERED 1
 
@@ -38,5 +43,7 @@ EXPOSE 8081
 VOLUME ["/app/data"]
 
 ENV PATH=/root/.local/bin:$PATH
+
+HEALTHCHECK --interval=30s --timeout=10s CMD curl --fail http://localhost:8081/healthstatus || exit 1
 
 CMD ["uvicorn", "kosync:app", "--host", "0.0.0.0", "--port", "8081"]

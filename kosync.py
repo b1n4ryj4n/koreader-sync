@@ -127,3 +127,7 @@ def get_progress(document: Optional[str] = None, x_auth_user: Optional[str] = He
                                          'timestamp': result["timestamp"]})
     else:
         return JSONResponse(status_code=401, content={"message": f"Unauthorized"})
+
+@app.get("/healthstatus")
+def get_healthstatus():
+    return JSONResponse(status_code=200, content={"message": f"healthy"})
