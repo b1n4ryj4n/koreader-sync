@@ -55,6 +55,10 @@ For linux/amd64 you can use `docker pull b1n4ryj4n/koreader-sync` and for linux/
 
 ## Changelog
 
+## [0.0.5] - 2024-05-24
+### Added
+- Merged ["Option to disable registration of new user accounts by env var."](https://github.com/b1n4ryj4n/koreader-sync/pull/5)
+
 ## [0.0.4] - 2023-10-29
 ### Added
 - Added the HEALTHCHECK command (also accessible via http://IP:8081/healthstatus)
