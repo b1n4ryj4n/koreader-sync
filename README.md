@@ -37,6 +37,10 @@ Set it true to retrieve always a random device id to force a progress sync.
 This is usefull if you only sync your progress from one device and 
 usually delete the *.sdr files with some cleaning tools.
 
+* OPEN_REGISTRATIONS ("True"|"False")
+
+Enable/disable new registrations to the server. Useful if you want to run a private server for a few users, although it doesn't necessarily improve security by itself.
+Set to True (enabled) by default.
 
 ## Dockerhub
 

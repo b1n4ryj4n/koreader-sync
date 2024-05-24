@@ -32,18 +32,24 @@ class KosyncDocument(BaseModel):
 
 @app.post("/users/create")
 def register(kosync_user: KosyncUser):
-    # check if username or password is missing
-    if kosync_user.username is None or kosync_user.password is None:
-        return JSONResponse(status_code=400, content={"message": f"Invalid request"})
-    # check if user already exists
-    QUser = Query()
-    if users.contains(QUser.username == kosync_user.username):
-        return JSONResponse(status_code=409, content="Username is already registered.")
-    # register new user
-    if users.insert({'username': kosync_user.username, 'password': kosync_user.password}):
-        return JSONResponse(status_code=201, content={"username": kosync_user.username})
-    # if something went wrong
-    return JSONResponse(status_code=500, content="Unknown server error")
+	# Check whether new registrations are allowed on this server based on the OPEN_REGISTRATIONS environment variable.
+	# By default registrations are enabled.
+	registrations_allowed = bool(strtobool(getenv("OPEN_REGISTRATIONS", "True")))
+	if registrations_allowed:
+		# check if username or password is missing
+		if kosync_user.username is None or kosync_user.password is None:
+			return JSONResponse(status_code=400, content={"message": f"Invalid request"})
+		# check if user already exists
+		QUser = Query()
+		if users.contains(QUser.username == kosync_user.username):
+			return JSONResponse(status_code=409, content="Username is already registered.")
+		# register new user
+		if users.insert({'username': kosync_user.username, 'password': kosync_user.password}):
+			return JSONResponse(status_code=201, content={"username": kosync_user.username})
+		# if something went wrong
+		return JSONResponse(status_code=500, content="Unknown server error")
+	else:
+		return JSONResponse(status_code=403, content="This server is currently not accepting new registrations.")
 
 
 @app.get("/users/auth")
