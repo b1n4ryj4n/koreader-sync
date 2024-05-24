@@ -25,7 +25,7 @@ This is a simple implementation of the KOReader (https://github.com/koreader/kor
 ```bash
 > docker build --rm=true --tag=kosync:latest .
 
-> docker-compose up -d
+> docker compose up -d
 
 ```
 
